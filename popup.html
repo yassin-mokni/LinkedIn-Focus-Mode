@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 300px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    h2 {
+      margin: 0;
+      color: #0077b5;
+    }
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    select {
+      flex: 0 0 auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      width: 120px; /* Adjust this value as needed */
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0077b5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005582;
+    }
+    /* Add these new styles for the switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #0077b5;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo.svg" alt="LinkedIn Focus Mode Logo" class="logo">
+    <h2>LinkedIn Focus Mode</h2>
+  </div>
+  <div class="form-row">
+    <label for="extensionEnabled">Enable extension:</label>
+    <label class="switch">
+      <input type="checkbox" id="extensionEnabled" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="form-row">
+    <label for="ctaDestination">Destination:</label>
+    <select id="ctaDestination">
+      <option value="jobs">Jobs</option>
+      <option value="messaging">Messaging</option>
+    </select>
+  </div>
+  <button id="saveSettings">Save Settings</button>
+  <script src="popup.js"></script>
+</body>
+</html>
