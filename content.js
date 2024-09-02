@@ -2,6 +2,11 @@
   let overlayShown = false;
   let ctaDestination = 'jobs'; // Default destination
   let extensionEnabled = true; // Default to enabled
+  let defaultTitle = "LinkedIn"; // Fallback title
+
+  document.addEventListener('DOMContentLoaded', () => {
+    defaultTitle = document.title || "LinkedIn"; // Store the default title or fallback to "LinkedIn"
+  });
 
   chrome.storage.sync.get(['extensionEnabled', 'ctaDestination'], function(result) {
     extensionEnabled = result.extensionEnabled !== false;
@@ -21,6 +26,7 @@
           document.body.removeChild(overlay);
           enableScroll();
           overlayShown = false;
+          document.title = defaultTitle; // Reset tab title
         }
       } else if (extensionEnabled && !overlayShown && (window.location.href === "https://www.linkedin.com/" || window.location.href === "https://www.linkedin.com/feed/")) {
         createOverlay();
@@ -53,6 +59,8 @@
   }
 
   function createOverlay() {
+    document.title = "LinkedIn Focus Mode";
+
     const overlay = document.createElement('div');
     overlay.style.cssText = `
       position: fixed;
@@ -73,6 +81,7 @@
     content.style.cssText = `
       max-width: 600px;
       padding: 0 20px;
+      margin-top: 100px; /* Adjust this value as needed */
     `;
 
     const headerContainer = document.createElement('div');
@@ -124,6 +133,7 @@
     const continueButton = createButton(`Go to ${ctaDestination.charAt(0).toUpperCase() + ctaDestination.slice(1)}`, '#5f6368', () => {
       window.location.href = `https://www.linkedin.com/${ctaDestination}/`;
       document.body.removeChild(overlay);
+      document.title = defaultTitle; // Reset tab title
     });
 
     buttonContainer.appendChild(goBackButton);
