@@ -81,7 +81,7 @@
     content.style.cssText = `
       max-width: 600px;
       padding: 0 20px;
-      margin-top: 100px; /* Adjust this value as needed */
+      margin-buttom: 100px;
     `;
 
     const headerContainer = document.createElement('div');
