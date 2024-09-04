@@ -28,7 +28,9 @@
           overlayShown = false;
           document.title = defaultTitle; // Reset tab title
         }
-      } else if (extensionEnabled && !overlayShown && (window.location.href === "https://www.linkedin.com/" || window.location.href === "https://www.linkedin.com/feed/")) {
+      } else if (extensionEnabled && !overlayShown && 
+                 (window.location.href === "https://www.linkedin.com/" || 
+                  window.location.href.includes("linkedin.com/feed"))) {
         createOverlay();
         overlayShown = true;
       } else if (extensionEnabled && overlayShown) {
@@ -44,7 +46,8 @@
   });
 
   // Check URL on initial load
-  if (window.location.href === "https://www.linkedin.com/" || window.location.href === "https://www.linkedin.com/feed/") {
+  if (window.location.href === "https://www.linkedin.com/" || 
+      window.location.href.includes("linkedin.com/feed")) {
     chrome.storage.sync.get(['extensionEnabled'], function(result) {
       extensionEnabled = result.extensionEnabled !== false;
       if (extensionEnabled) {
