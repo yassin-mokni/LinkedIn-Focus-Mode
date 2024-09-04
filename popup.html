@@ -46,7 +46,7 @@
       background-color: #0077b5;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
@@ -93,6 +93,28 @@
     input:checked + .slider:before {
       transform: translateX(26px);
     }
+    .kofi-button {
+      display: block;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .kofi-button img {
+      height: 36px;
+      border: 0;
+    }
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    #saveSettings {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+    .kofi-button {
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -114,7 +136,14 @@
       <option value="messaging">Messaging</option>
     </select>
   </div>
-  <button id="saveSettings">Save Settings</button>
+  <div class="button-row">
+    <div class="kofi-button">
+      <a href='https://ko-fi.com/K3K712VRZQ' target='_blank'>
+        <img src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' alt='Buy Me a Coffee at ko-fi.com' />
+      </a>
+    </div>
+    <button id="saveSettings">Save Settings</button>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
